@@ -1,0 +1,13 @@
+input{
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    width: 437px;
+    background-color: rgb(243, 248, 251);
+    font-size: 20px;
+    border: .5px solid rgb(163, 163, 167);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 14px 14px 32px -15px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 14px 14px 32px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 14px 14px 32px -15px rgba(0,0,0,0.75);
+}

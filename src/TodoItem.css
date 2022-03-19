@@ -1,0 +1,43 @@
+.listItem{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(243, 248, 251);
+    width: 400px;
+    border: .5px solid rgb(163, 163, 167);
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 14px 14px 32px -15px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 14px 14px 32px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 14px 14px 32px -15px rgba(0,0,0,0.75);
+}
+
+.listDelete{
+    font-weight: bold;
+    align-self: center;
+    cursor: pointer;
+    color:rgb(107, 102, 112);
+    font-size: 25px;
+}
+
+.listDelete:hover{
+    color:red;
+}
+
+.listText-completed{
+    text-decoration: line-through;
+}
+
+.listChecked{
+    color:rgb(107, 102, 112);
+    align-self: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.listChecked-completed{
+    color:greenyellow;
+}
