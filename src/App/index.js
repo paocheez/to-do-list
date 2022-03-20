@@ -5,20 +5,38 @@ import { AppUI } from "./AppUI";
 const defaultTodos = [
   {text: "Cortar cebolla", completed: true},
   {text: "Tomar curso de react", completed: false},
-  {text: "Llorar con la llorona", completed: true},
+  {text: "Reparar la bicicleta", completed: true},
 ]
 */
-function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parseTodos;
-  if(!localStorageTodos){
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parseTodos = [];
+
+//custom react-hook
+function useLocalStorage(itemName, initialValue){
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+
+  if(!localStorageItem){
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
   }else{
-    parseTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
+  }
+  
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem);
   }
 
-  const [todos, setTodos] = React.useState(parseTodos);
+  return [
+    item,
+    saveItem
+  ];
+}
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -37,11 +55,6 @@ function App() {
     })
   }
 
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodos(newTodos);
-  }
 
   const toggleCompleteTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text);
